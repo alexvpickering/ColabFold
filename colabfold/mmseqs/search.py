@@ -107,6 +107,7 @@ def mmseqs_search_monomer(
 
     search_param = ["--num-iterations", "3", "--db-load-mode", str(db_load_mode), "-a", "-e", "0.1", "--max-seqs", "10000"]
     search_param += ["--prefilter-mode", str(prefilter_mode)]
+    search_param += ["--gpu", os.getenv('MMSEQS_GPU', '0')]
     if s is not None:
         search_param += ["-s", "{:.1f}".format(s)]
     else:
@@ -239,6 +240,7 @@ def mmseqs_search_pair(
     # @formatter:off
     search_param = ["--num-iterations", "3", "--db-load-mode", str(db_load_mode), "-a", "-e", "0.1", "--max-seqs", "10000",]
     search_param += ["--prefilter-mode", str(prefilter_mode)]
+    search_param += ["--gpu", os.getenv('MMSEQS_GPU', '0')]
     if s is not None:
         search_param += ["-s", "{:.1f}".format(s)]
     else:
